@@ -1,27 +1,25 @@
-import smbus
+import smbus # I2C
 from time import sleep
-
-# Pin initialisation
-# GPIO setup
-
     
 class HD44780I2Cdriver:
-    # control mode - 4bit or 8bit
     bus = smbus.SMBus(1)
-    i2cAddress = 0x27
+    i2cAddress = 0x27   # Default I2C address of an unmodified backpack. Change it in your program if yours has a different one
     mode = 4
-    RS = False
-    RW = False
+    RS = False          # RS, RW and E are pins that are used in different low-level functions. Check the HD44780 documentation for more info.
+    RW = False          
     E = False
-    backlight = True
-    totalLines = None
+    backlight = True    # Changing this value will make the display's backlight turn on or off next time when the RPi communicates with the I2C (writeBits())
+    totalLines = None   # Initialising display lines & columns
     totalColumns = None
-    line = 0
-    column = 0
+    line = 0            # Current line position
+    column = 0          # Current column position
     
-    def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0):
-        self.totalLines = lines
-        self.totalColumns = columns
+    def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0, address=0x27):
+        self.totalLines = lines         # number of lines
+        self.totalColumns = columns     # number of columns
+        self.i2cAddress = address       # address init
+        
+        # Display init as described in the datasheet.
         
         sleep(0.015)
         self.writeBits(0b00110011)  # init
@@ -57,6 +55,7 @@ class HD44780I2Cdriver:
         
     def writeBits(self, hexData):
         self.delayMicroseconds(1000)
+        
         # first 4 bits:
         i2cdata = 240 & hexData
         if self.RS == True:
@@ -88,10 +87,14 @@ class HD44780I2Cdriver:
         sleep(0.01)
         
     def delayMicroseconds(self, microseconds):
-        seconds = microseconds / float(1000000)   # divide microseconds by 1 million for seconds
-        sleep(seconds)
+        """
+        Easier way to sleep by typing the delay time in microseconds.
+        """
+        s = microseconds / float(1000000)
+        sleep(s)
     """
     def allOff(self):
+        # This function turn all pins off, but it isn't used in the I2C mode.
         #GPIO.output(self.E, 0)
         for pin in self.DB:
             #GPIO.setup(pin, 0)
@@ -99,8 +102,6 @@ class HD44780I2Cdriver:
     def functionSet(self, DL, N, F):
         """
         From the datasheet:
-        https://www.sparkfun.com/datasheets/LCD/HD44780.pdf
-        
         DL = data format (4 bits = 0, 8 bits = 1)
         N  = number of lines (2 lines = 1, 1 line = 0)
         F  = font size (5x10 dots = 1, 5x8 dots = 0)
@@ -121,6 +122,7 @@ class HD44780I2Cdriver:
         
     def displayControl(self, displayState, cursorState, cursorBlink):
         """
+        Low-level function from the datasheet.
         displayState = display on (1) / off (0)
         cursorState  = cursor on (1) / off (0)
         cursorBlink  = cursor blink on (1) / off (0)
@@ -136,7 +138,7 @@ class HD44780I2Cdriver:
     
     def clear(self):
         """
-        Function from the datasheet. It has no parameters.
+        Function from the datasheet that clears the display and resets the cursor's position. It has no parameters.
         """
         self.line=0
         self.column=0
@@ -160,8 +162,12 @@ class HD44780I2Cdriver:
         """
         This function writes the parsed string to the register.
         '\n' is used as a newline character.
+        The string parameter is the message that you want to show on the display. It could be a string (str), a character code (int) or a Python list that contains both.
+        Character codes are usually used to print custom characters.
+        lineNum and columnNum parameters can be used to indicate the cursor's starting position.
+        delay and newlineDelay parameters are variables that change the delay after each character (or line).
         """
-        lineOffset = (0x00, 0x40, 0x14, 0x54)    # modify this to modify where each line starts
+        lineOffset = (0x00, 0x40, 0x14, 0x54)    # will be changed to RowAddresses variable in a future update
         
         if lineNum > 3:
             raise ValueError("Parsed line index is out of range.")
@@ -186,9 +192,9 @@ class HD44780I2Cdriver:
         linerIndex = 0
         for char in range(0, len(string)):
             if string[char] != '\n':
-                # function calling itself if a string with more than one character is parsed into an array
                 afterRecursivity=False
                 if type(string[char]) == str and len(string[char])>1:
+                    # recursive function (calling itself) if a string with more than one character is parsed into a Python list
                     self.line=lineNum
                     self.column=columnNum
                     afterRecursivity=True
@@ -201,7 +207,7 @@ class HD44780I2Cdriver:
                     self.writeBits(ord(string[char]))
                 elif type(string[char]) == int:
                     self.writeBits(string[char])
-                    sleep(0.1)
+                    #sleep(0.1) # should be removed?
                 if columnNum < self.totalColumns-1 and afterRecursivity == False:
                     columnNum+=1     
                 
@@ -240,6 +246,10 @@ class HD44780I2Cdriver:
         self.displayControl(power, cursor, blink)
     
     def writeChar(self, char):
+        """
+        This simple function writes a character.
+        The char parameter should be a character code (int).
+        """
         self.RS = 1
         self.writeBits(char)
         self.delayMicroseconds(100)
@@ -248,7 +258,7 @@ class HD44780I2Cdriver:
     def DDRAMaddress(self, address):
         """
         This function sets the DDRAM address.
-        After setting a DDRAM address, all write data is written into the DDRAM
+        After setting a DDRAM address, all write data is written into the DDRAM.
         """
         self.writeBits(0b10000000 | address)
         
@@ -299,7 +309,6 @@ class HD44780I2Cdriver:
             self.writeBits(0b00011000)
             sleep(speed)
             
-    #def readAddress(self)
-        
-    #def readBusyFlag(self):
-    #def readBits
+    #def readAddress(self) - future update
+    #def readBusyFlag(self): - future update
+    #def readBits - future update
