@@ -23,3 +23,8 @@ Then, you can install the library using the following command (requires root pri
 sudo python3 setup.py install
 ```
 You succesfully installed the library. Now you can start coding. Good luck on your projects!
+
+## Display initialization
+A display usually need be initialized using the number of rows and column of the display.
+However, in some cases, displays without an auxiliary chip might need to have a different initialization.
+For example, an original HD44780 16x1 display probably needs to be initialized as an 8x2 display.
