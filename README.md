@@ -12,7 +12,7 @@ CharPi relies on [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) and smbus Python
 
 ## Installation guide
 
-To install CharPi, you'll first have to download one of the [releases](https://github.com/iCMDgithub/CharPi/releases).
+To install CharPi, you'll first have to download this repository's code. You can use git to download it directky on the Pi.
 
 Open the Terminal and navigate to the package's directory using:
 ```
