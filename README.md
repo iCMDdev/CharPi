@@ -7,7 +7,7 @@ CharPi includes support for most character displays based on the Hitachi HD44780
 
 ## Dependencies
 
-CharPi relies on [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) and smbus Python modules that come with Raspberry Pi OS (tested on Buster & Bullseye) to communicate with the character display. However, many non-raspbian operating systems might work fine if the dependencies are installed and the required changes are made. Python minimum tested version: 3.7.
+CharPi relies on [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) and smbus Python modules to communicate with the display. RPi.GPIO comes with any Raspberry Pi OS, while smbus isn't preinstalled on the Lite version, but you can install it with pip3. Python minimum tested version: 3.7. Tested on Raspberry Pi OS Buster & Bullseye. But it might work fine on other operating systems (if the dependencies are installed and the required changes are made).
 
 
 ## Installation guide
@@ -16,7 +16,7 @@ To install CharPi, you'll first have to download this repository's code. You can
 
 Open the Terminal and navigate to the package's directory using:
 ```
-cd Path_Inside_The_Package
+cd Path_To_Package_Location/CharPi/code
 ```
 Then, you can install the library using the following command (requires root privileges) :
 ```
@@ -25,6 +25,7 @@ sudo python3 setup.py install
 You succesfully installed the library. Now you can start coding. Good luck on your projects!
 
 ## Display initialization
+
 A display usually need be initialized using the number of rows and column of the display.
 However, in some cases, displays without an auxiliary chip might need to have a different initialization.
 For example, an original HD44780 16x1 display probably needs to be initialized as an 8x2 display.
