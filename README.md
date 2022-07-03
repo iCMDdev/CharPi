@@ -14,7 +14,7 @@ Python minimum tested version: 3.7. Tested on Raspberry Pi OS Buster & Bullseye,
 
 ## Installation guide
 
-To install CharPi, you'll first have to download this repository's code. You can use git to download it directky on the Pi.
+To install CharPi, you'll first have to download this repository's code. You can use git to download it directly on the Pi.
 
 Open the Terminal and navigate to the package's directory using:
 ```
