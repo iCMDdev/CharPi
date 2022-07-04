@@ -33,3 +33,7 @@ You succesfully installed the library. Now you can start coding. Good luck on yo
 A display usually need be initialized using the number of rows and columns of the display.
 However, in some cases, displays without an auxiliary chip might need to have a different initialization.
 For example, an original HD44780 16x1 display probably needs to be initialized as an 8x2 display.
+
+# Legal
+Raspberry Pi is a trademark of Raspberry Pi Ltd.
+This Python library is not affiliated with Raspberry Pi Ltd. in any way.
