@@ -4,7 +4,22 @@ Python character display (Hitachi HD44780) driver for Raspberry Pi with many fea
 
 CharPi includes support for most character displays based on the Hitachi HD44780 display (including I2C backpacks). By default, it has support for displays with up to 4 rows, but this can be easily changed by modifying the Python list containing each row's starting DDRAM address.
 
-Custom Output Handling makes it easy to use intermediary chips such as Shift Registers, or any other type of complex setups, by providing your own callback function that handles the output signals. Your function will be called by CharPi every time when a display command needs to be sent. Note that a display command is not necessarily equivalent to a CharPi function (meaning that if you call a function such as writeString(), your function will be called more than once). Your function will have an array as an argument. This array will store the pin values that will need to be sent to the display.
+## Special feature: Custom Output Handling
+Custom Output Handling makes it easy to use intermediary chips such as Shift Registers, or any other type of complex setups, by providing your own callback function that handles the output signals. Your function will be called by CharPi every time when a display command needs to be sent. Note that a display command is not necessarily equivalent to a CharPi function (meaning that if you call a function such as writeString(), your function will be called more than once). Your function will have a binary number as an argument. This argument will store the pin values that will need to be sent to the display, in the following format:
+
+```
+   | Digit 1 | Digit 2 | Digit 3 | Digit 4 |  Digit 5  | Digit 6 | Digit 7 | Digit 8 |
+--------------------------------------------------------------------------------------
+0b |  PIN 1  |  PIN 2  |  PIN 3  |  PIN 4  | BACKLIGHT |  none   |   RW    |   RS    |
+```
+
+The custom ouput handling object (HD44780CustomDriver()) uses the display in 4-bit mode.
+
+Here is how your callback function should look like:
+```
+def functionName(binaryData):
+    # send received data to the display
+```
 
 ## Dependencies
 
