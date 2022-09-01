@@ -705,8 +705,9 @@ class HD44780CustomDriver:
         sleep(0.0001)
         
     def writeBits(self, hexData):
-        arr = []
         self.delayMicroseconds(1000)
+        # 0b (PIN 1) (PIN 2) (PIN 3) (PIN 4) (BACKLIGHT) (none) (RW) (RS)
+        
         # first 4 bits:
         i2cdata = 240 & hexData
         if self.RS == True:
@@ -738,7 +739,7 @@ class HD44780CustomDriver:
         sleep(0.01)
         
     def delayMicroseconds(self, microseconds):
-        seconds = microseconds / float(1000000)   # divide microseconds by 1 million for seconds
+        seconds = microseconds / 1000000.0
         sleep(seconds)
     """
     def allOff(self):
