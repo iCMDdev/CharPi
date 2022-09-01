@@ -43,6 +43,10 @@ sudo python3 setup.py install
 ```
 You succesfully installed the library. Now you can start coding. Good luck on your projects!
 
+## Usage
+
+Check out the [examples](https://github.com/iCMDgithub/CharPi/tree/main/Examples).
+
 ## Display initialization
 
 A display usually need be initialized using the number of rows and columns of the display.
