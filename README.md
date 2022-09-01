@@ -33,7 +33,7 @@ Tested on Raspberry Pi OS Buster & Bullseye. It might work fine on other operati
 
 To install CharPi, you'll first have to download this repository's code. You can use git to download it directly on the Pi.
 
-Open the Terminal and navigate to the package's directory using:
+After downloading, open the Terminal and navigate to the package's directory using:
 ```
 cd Path_To_Package_Location/CharPi/code
 ```
