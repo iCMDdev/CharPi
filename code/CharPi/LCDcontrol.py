@@ -1,4 +1,3 @@
-import smbus
 from time import sleep
 
 # Pin initialisation
@@ -282,7 +281,7 @@ class HD44780_4bitDriver:
         """
         self.writeBits(0b01000000 | address)
     
-    def newCharacter(self, charArr, address):
+    def NewCharacter(self, charArr, address):
         """
         This function simplifies the character creation process.
         The charArr parameter needs to be an an array made out of 8 binary values.
@@ -331,6 +330,7 @@ class HD44780_4bitDriver:
 
     
 class HD44780I2Cdriver:
+    import smbus
     # control mode - 4bit or 8bit
     bus = smbus.SMBus(1)
     i2cAddress = 0x27
@@ -938,11 +938,12 @@ class HD44780CustomDriver:
         This function simplifies the character creation process.
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
-
+        self.RS = 0
         self.CGRAMaddress(address)
         self.RS = 1
         for line in charArr:
             self.writeBits(line)
+            sleep(0.001)
         self.RS = 0
     
     def shift(self, display, cursor, position):
