@@ -16,9 +16,6 @@ The display.control() function can set the following display settings:
 The following configuration is the default one:
     display.control(power=1, backlight=1, increment=1, shift=0, cursor=0, blink=0)
 """
-
-display.writeString("Custom Characters:", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
-
 # Custom Characters
 
 # Function is defines as: display.NewCharacter(characterArray, address)
@@ -29,7 +26,7 @@ display.NewCharacter([0b00000,
                       0b10001,
                       0b10001,
                       0b01110,
-                      0b00000], 1) # Created a smiley face at address 0
+                      0b00000], 1) # Created a smiley face at address 1
 
 display.NewCharacter([0b00000,
                       0b01110,
@@ -38,9 +35,10 @@ display.NewCharacter([0b00000,
                       0b00100,
                       0b00100,
                       0b11111,
-                      0b00000], 2) # Created a tree at address 1
+                      0b00000], 2) # Created a tree at address 2
 
 # Function is defines as: display.writeChar(character_address)
+display.writeString("Custom Characters:", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
 display.writeChar(1)
 display.writeChar(2)
 
