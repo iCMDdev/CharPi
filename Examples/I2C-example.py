@@ -1,4 +1,4 @@
-from CharPi import HD44780I2CDriver
+from CharPi import HD44780I2Cdriver
 
 display = HD44780I2Cdriver(lines=4, columns=20, address=0x27) # 4 rows, 20 colums display, at I2C address 0x27
 display.writeString("Hello, World!", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
