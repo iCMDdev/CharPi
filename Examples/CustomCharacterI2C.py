@@ -17,7 +17,7 @@ The following configuration is the default one:
     display.control(power=1, backlight=1, increment=1, shift=0, cursor=0, blink=0)
 """
 
-display.writeString("Custom Characters: ", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
+display.writeString("Custom Characters:", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
 
 # Custom Characters
 
@@ -45,7 +45,7 @@ display.writeChar(1)
 display.writeChar(2)
 
 # Fun fact: you can use writeString() to write custom characters as well, by placing them in an array! The array can also contain strings as elements.
-display.writeString(["Writing some custom characters (again): ", 1, 2, "\nHow cool is that!?"], lineNum = 2, columnNum = 0, delay = 0.1, newlineDelay = 0.3)
+display.writeString(["Hello!", 1, 2, "\nHow cool is that!?"], lineNum = 2, columnNum = 0, delay = 0.1, newlineDelay = 0.3)
 
 """
 Useful things to know:
