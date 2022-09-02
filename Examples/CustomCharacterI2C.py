@@ -57,5 +57,5 @@ Useful things to know:
 5) Usually, HD44780 displays use 8 pixel width x 5 pixel height characters, but others use 5x10. Check your display to make sure which one you should use.
 6) The writeChar() method will write a character with the character code (address) provided as an argument. 
    This means that if you send an address not equal to a custom character address, the display will print the character with the equivalent
-   (ASCII) code. In fact, this method is used by writeString() internally.
+   (ASCII) code.
 """
