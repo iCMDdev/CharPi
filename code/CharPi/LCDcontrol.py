@@ -287,7 +287,7 @@ class HD44780_4bitDriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address)
+        self.CGRAMaddress(address << 3)
         self.RS = 1
         for line in charArr:
             #print(bin(line))
@@ -613,12 +613,10 @@ class HD44780I2Cdriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address)
+        self.CGRAMaddress(address << 3)
         self.RS = 1
         for line in charArr:
-            print(bin(line))
             self.writeBits(line)
-            sleep(0.01)
         self.RS = 0
     
     def shift(self, display, cursor, position):
@@ -941,7 +939,7 @@ class HD44780CustomDriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address)
+        self.CGRAMaddress(address << 3)
         self.RS = 1
         for line in charArr:
             self.writeBits(line)
