@@ -669,7 +669,7 @@ class HD44780CustomDriver:
         self.totalLines = lines
         self.totalColumns = columns
         
-        if not iscallable(callback):
+        if not callable(callback):
             raise TypeError("You need to provide a data write function through the callback parameter.")
         
         sleep(0.015)
