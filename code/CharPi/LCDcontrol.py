@@ -665,7 +665,7 @@ class HD44780CustomDriver:
     line = 0
     column = 0
     
-    def __init__(self, callback lines=2, columns=16, font=8, cursor=0, blink=0):
+    def __init__(self, callback, lines=2, columns=16, font=8, cursor=0, blink=0):
         self.totalLines = lines
         self.totalColumns = columns
         
