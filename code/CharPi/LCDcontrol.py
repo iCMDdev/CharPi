@@ -344,6 +344,7 @@ class HD44780I2Cdriver:
     line = 0
     column = 0
     
+    
     def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0, address=0x27):
         self.totalLines = lines
         self.totalColumns = columns
@@ -664,14 +665,14 @@ class HD44780CustomDriver:
     totalColumns = None
     line = 0
     column = 0
-    
+    callback = None
     def __init__(self, callback, lines=2, columns=16, font=8, cursor=0, blink=0):
         self.totalLines = lines
         self.totalColumns = columns
         
         if not callable(callback):
             raise TypeError("You need to provide a data write function through the callback parameter.")
-        
+        self.callback = callback
         sleep(0.015)
         self.writeBits(0b00110011)  # init
         sleep(0.005)
