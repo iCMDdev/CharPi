@@ -1,6 +1,6 @@
 # CharPi - Python HD44780 display driver for Raspberry Pi
 
-Python character display (Hitachi HD44780) driver for Raspberry Pi with many features, such as automatic text alignment and Custom Output Handling (makes it easy to use intermediary chips such as Shift Registers), both coming in a future update. Includes support for I2C backpacks.
+Python character display (Hitachi HD44780) driver for Raspberry Pi with many features, such as Custom Output Handling (makes it easy to use intermediary chips such as Shift Registers) and automatic text alignment (coming in a future update). Includes support for I2C backpacks.
 
 CharPi includes support for most character displays based on the Hitachi HD44780 display (including I2C backpacks). By default, it has support for displays with up to 4 rows, but this can be easily changed by modifying the Python list containing each row's starting DDRAM address.
 
