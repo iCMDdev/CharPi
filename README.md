@@ -1,6 +1,6 @@
 # CharPi - Python HD44780 display driver for Raspberry Pi
 
-Python character display (Hitachi HD44780) driver for Raspberry Pi with many features, such as Custom Output Handling (makes it easy to use intermediary chips such as Shift Registers) and automatic text alignment (coming in a future update). Includes support for I2C backpacks.
+<img src="/hello-CharPi.png" alt="Image of a display using CharPi">Python character display (Hitachi HD44780) driver for Raspberry Pi with many features, such as Custom Output Handling (makes it easy to use intermediary chips such as Shift Registers) and automatic text alignment (coming in a future update). Includes support for I2C backpacks.
 
 CharPi includes support for most character displays based on the Hitachi HD44780 display (including I2C backpacks). By default, it has support for displays with up to 4 rows, but this can be easily changed by modifying the Python list containing each row's starting DDRAM address.
 
@@ -31,17 +31,21 @@ Tested on Raspberry Pi OS Buster & Bullseye. It might work fine on other operati
 
 ## Installation guide
 
-To install CharPi, you'll first have to download this repository's code. You can use git to download it directly on the Pi.
+To install CharPi, you'll first have to download this repository's code. You can use git to download it directly on the RPi.
 
-After downloading, open the Terminal and navigate to the package's directory using:
 ```
-cd Path_To_Package_Location/CharPi/code
+git clone https://github.com/iCMDgithub/CharPi.git
+```
+
+After downloading, open the Terminal and navigate inside the package using:
+```
+cd CharPi/code
 ```
 Then, you can install the library using the following command (requires root privileges) :
 ```
 sudo python3 setup.py install
 ```
-You succesfully installed the library. Now you can start coding. Good luck on your projects!
+You succesfully installed the library. Now you can start coding, or try out some examples. Good luck on your projects!
 
 ## Usage
 
