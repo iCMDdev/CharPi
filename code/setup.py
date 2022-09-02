@@ -1,7 +1,7 @@
 from setuptools import setup
 
 __name__ = "CharPi"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __description__ = "Alpha version. This module is a driver for HD4480 and HD4480-like LCDs."
 __packages__ = ["CharPi"]
 __author__ = "github.com/iCMDgithub"
