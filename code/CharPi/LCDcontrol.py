@@ -290,7 +290,7 @@ class HD44780_4bitDriver:
         self.CGRAMaddress(address)
         self.RS = 1
         for line in charArr:
-            print(bin(line))
+            #print(bin(line))
             self.writeBits(line)
         self.RS = 0
     
@@ -612,10 +612,11 @@ class HD44780I2Cdriver:
         This function simplifies the character creation process.
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
-
+        self.RS = 0
         self.CGRAMaddress(address)
         self.RS = 1
         for line in charArr:
+            print(bin(line))
             self.writeBits(line)
         self.RS = 0
     
