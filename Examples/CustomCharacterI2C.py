@@ -19,7 +19,7 @@ The following configuration is the default one:
 # Custom Characters
 
 # Function is defines as: display.NewCharacter(characterArray, address)
-display.NewCharacter([0b00000,
+display.NewCharacter([0b01010,
                       0b01010,
                       0b01010,
                       0b00000,
@@ -49,7 +49,7 @@ display.writeString(["Hello!", 1, 2, "\nHow cool is that!?"], lineNum = 2, colum
 Useful things to know:
 1) You can only create 8 characters for 5x8 fonts, and 4 for 5x10 fonts (hardware limit)
 2) Each custom character is saved by the display at a specific address in it's memory
-3) The custom character's memory address can range from 1 to 8s. You'll need use this address to save a new
+3) The custom character's memory address can range from 0 to 7. You'll need use this address to save a new
    character (using the newCharacter() method), and print it on the display (with writeChar())
 4) The NewCharacter() method takes an array of (binary) integers as shown above. 1 means the pixel should be on, and 0 means it should be off.
 5) Usually, HD44780 displays use 8 pixel width x 5 pixel height characters, but others use 5x10. Check your display to make sure which one you should use.
