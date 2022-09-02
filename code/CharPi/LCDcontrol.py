@@ -344,10 +344,10 @@ class HD44780I2Cdriver:
     line = 0
     column = 0
     
-    def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0):
+    def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0, address=0x27):
         self.totalLines = lines
         self.totalColumns = columns
-        
+        self.i2cAddress = address
         sleep(0.015)
         self.writeBits(0b00110011)  # init
         sleep(0.005)
