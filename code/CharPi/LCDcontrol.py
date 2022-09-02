@@ -618,6 +618,7 @@ class HD44780I2Cdriver:
         for line in charArr:
             print(bin(line))
             self.writeBits(line)
+            sleep(0.01)
         self.RS = 0
     
     def shift(self, display, cursor, position):
