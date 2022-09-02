@@ -25,10 +25,12 @@ class HD44780_4bitDriver:
     totalColumns = None
     line = 0
     column = 0
+    font = None
     
     def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0):
         self.totalLines = lines
         self.totalColumns = columns
+        self.font = font
         self.GPIO.setup(self.RSpin, self.GPIO.LOW)
         self.GPIO.setup(self.ENpin, self.GPIO.LOW)
         sleep(0.015)
@@ -287,10 +289,12 @@ class HD44780_4bitDriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address << 3)
+        if self.font == 8:
+            self.CGRAMaddress(address << 3)
+        else:
+            self.CGRAMaddress(address << 4)
         self.RS = 1
         for line in charArr:
-            #print(bin(line))
             self.writeBits(line)
         self.RS = 0
     
@@ -343,7 +347,7 @@ class HD44780I2Cdriver:
     totalColumns = None
     line = 0
     column = 0
-    
+    font = None
     
     def __init__(self, lines=2, columns=16, font=8, cursor=0, blink=0, address=0x27):
         self.totalLines = lines
@@ -355,6 +359,7 @@ class HD44780I2Cdriver:
         self.writeBits(0b00110010)  # init 4 bit
         sleep(0.0001)
         
+        self.font = font
         # FUNCTION SET
         # setting the font variable to F bit value:
         if font==10:
@@ -614,7 +619,10 @@ class HD44780I2Cdriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address << 3)
+        if self.font == 8:
+            self.CGRAMaddress(address << 3)
+        else:
+            self.CGRAMaddress(address << 4)
         self.RS = 1
         for line in charArr:
             self.writeBits(line)
@@ -666,10 +674,11 @@ class HD44780CustomDriver:
     line = 0
     column = 0
     callback = None
+    font = None
     def __init__(self, callback, lines=2, columns=16, font=8, cursor=0, blink=0):
         self.totalLines = lines
         self.totalColumns = columns
-        
+        self.font = font
         if not callable(callback):
             raise TypeError("You need to provide a data write function through the callback parameter.")
         self.callback = callback
@@ -940,7 +949,10 @@ class HD44780CustomDriver:
         The charArr parameter needs to be an an array made out of 8 binary values.
         """
         self.RS = 0
-        self.CGRAMaddress(address << 3)
+        if self.font == 8:
+            self.CGRAMaddress(address << 3)
+        else:
+            self.CGRAMaddress(address << 4)
         self.RS = 1
         for line in charArr:
             self.writeBits(line)
