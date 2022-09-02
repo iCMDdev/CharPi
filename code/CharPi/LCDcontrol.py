@@ -944,7 +944,6 @@ class HD44780CustomDriver:
         self.RS = 1
         for line in charArr:
             self.writeBits(line)
-            sleep(0.001)
         self.RS = 0
     
     def shift(self, display, cursor, position):
