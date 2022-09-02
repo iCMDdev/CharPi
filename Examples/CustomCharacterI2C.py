@@ -26,24 +26,14 @@ display.NewCharacter([0b01010,
                       0b10001,
                       0b10001,
                       0b01110,
-                      0b00000], 1) # Created a smiley face at address 1
-
-display.NewCharacter([0b00000,
-                      0b01110,
-                      0b11111,
-                      0b01110,
-                      0b00100,
-                      0b00100,
-                      0b11111,
-                      0b00000], 2) # Created a tree at address 2
+                      0b00000], 0) # Created a smiley face at address 0
 
 # Function is defines as: display.writeChar(character_address)
 display.writeString("Custom Characters:", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
-display.writeChar(1)
-display.writeChar(2)
+display.writeChar(0)
 
 # Fun fact: you can use writeString() to write custom characters as well, by placing them in an array! The array can also contain strings as elements.
-display.writeString(["Hello!", 1, 2, "\nHow cool is that!?"], lineNum = 2, columnNum = 0, delay = 0.1, newlineDelay = 0.3)
+display.writeString(["Hello!", 0, "\nHow cool is that!?"], lineNum = 2, columnNum = 0, delay = 0.1, newlineDelay = 0.3)
 
 """
 Useful things to know:
