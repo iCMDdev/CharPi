@@ -35,7 +35,7 @@ display.NewCharacter([0b00000,
                       0b10001,
                       0b10001,
                       0b01110,
-                      0b00000], 1) # Created a smiley face at address 0
+                      0b00000], 1) # Created a smiley face at address 1
 
 # Function is defines as: display.writeChar(character_address)
 display.writeString("Custom Characters:", delay = 0.1, newlineDelay = 0.3) # write a string with the specified delays. 
