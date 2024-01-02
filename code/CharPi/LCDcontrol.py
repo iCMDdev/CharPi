@@ -28,7 +28,7 @@ class HD44780_4bitDriver:
     font = None
     
     def __init__(self, RSpin, ENpin, DataPins, lines=2, columns=16, font=8, cursor=0, blink=0):
-        if len(DataPins) != 4
+        if len(DataPins) != 4:
             raise ValueError("4-Bit mode requires 4 data pins (BCM number)")
         self.RSpin = RSpin
         self.ENpin = ENpin
