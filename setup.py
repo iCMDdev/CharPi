@@ -6,7 +6,7 @@ __description__ = "Alpha version. This module is a driver for HD4480 and HD4480-
 __packages__ = ["CharPi"]
 __author__ = "github.com/iCMDdev"
 __url__ = "https://www.github.com/iCMDdev/CharPi"
-__download_url = 'https://github.com/iCMDdev/CharPi/archive/refs/tags/v0.2.5.tar.gz'
+__download_url = 'https://github.com/iCMDdev/CharPi/archive/refs/tags/v0.2.6.tar.gz'
 __keywords__ = ["HD44780", "I2C", "LCD", "display", "character"]
 __requires__ = ["RPi.GPIO", "smbus"]
 
