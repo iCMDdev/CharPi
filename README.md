@@ -23,7 +23,7 @@ def functionName(binaryData):
 
 ## Dependencies
 
-CharPi relies on [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) (for GPIO) or [smbus](https://pypi.org/project/smbus/) (for I2C) Python modules to communicate with the display. RPi.GPIO comes with the latest Raspberry Pi OS by default. SMBus isn't preinstalled on the Lite version, but you can install it with pip3. 
+CharPi relies on [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) (for GPIO) or [smbus](https://pypi.org/project/smbus/) (for I2C) Python modules to communicate with the display. Depending on how you're wiring the display, you may need to install one of these 2 modules. RPi.GPIO comes with the latest Raspberry Pi OS by default. SMBus isn't preinstalled on the Lite version, but you can install it with `pip3`. 
 
 Python minimum tested version: 3.7.
 Tested on Raspberry Pi OS Buster & Bullseye. It might work fine on other operating systems too (if the dependencies are installed and the required changes are made).
@@ -34,7 +34,7 @@ Tested on Raspberry Pi OS Buster & Bullseye. It might work fine on other operati
 To install CharPi, you can use PyPi:
 
 ```
-pip install CharPi
+pip3 install CharPi
 ```
 
 
