@@ -31,21 +31,12 @@ Tested on Raspberry Pi OS Buster & Bullseye. It might work fine on other operati
 
 ## Installation guide
 
-To install CharPi, you'll first have to download this repository's code. You can use git to download it directly on the RPi.
+To install CharPi, you can use PyPi:
 
 ```
-git clone https://github.com/iCMDgithub/CharPi.git
+pip install CharPi
 ```
 
-After downloading, open the Terminal and navigate inside the package using:
-```
-cd CharPi/code
-```
-Then, you can install the library using the following command (requires root privileges) :
-```
-sudo python3 setup.py install
-```
-You succesfully installed the library. Now you can start coding, or try out some examples. Good luck on your projects!
 
 ## Usage
 
